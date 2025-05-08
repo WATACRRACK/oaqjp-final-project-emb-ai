@@ -1,0 +1,28 @@
+import requests
+import json
+
+def emotion_predictor(text):
+    if not text.strip():
+        return {"error": "Texto vacío"}, 400
+
+    url = "https://watson-nlp-api-endpoint"  # Este es un ejemplo, deberías reemplazarlo
+    params = {"text": text}
+
+    # Simulación para pruebas
+    emotions = {
+        "anger": 0.1,
+        "disgust": 0.05,
+        "fear": 0.2,
+        "joy": 0.6,
+        "sadness": 0.05
+    }
+    dominant_emotion = max(emotions, key=emotions.get)
+
+    return {
+        "anger": emotions["anger"],
+        "disgust": emotions["disgust"],
+        "fear": emotions["fear"],
+        "joy": emotions["joy"],
+        "sadness": emotions["sadness"],
+        "dominant_emotion": dominant_emotion
+    }, 200
